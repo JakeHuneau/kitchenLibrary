@@ -1,0 +1,13 @@
+.Login {
+  margin-right: 10px;
+  * > .bp3-input-group {
+    margin-left: 5px;
+  }
+
+  * > .bp3-button {
+    margin-left: 5px;
+  }
+  &__fields {
+    display: inline-flex;
+  }
+}

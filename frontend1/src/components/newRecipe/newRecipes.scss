@@ -1,0 +1,10 @@
+.NewRecipe {
+  width: 80%;
+  margin: 0 auto;
+
+  &__directions {
+    > .bp3-input {
+      width: 100%;
+    }
+  }
+}

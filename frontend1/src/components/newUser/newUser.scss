@@ -1,0 +1,13 @@
+.NewUser {
+  width: 80%;
+  margin: 0 auto;
+
+  &__field {
+    display: inline-flex;
+    align-items: baseline;
+
+    > .bp3-input-group {
+      margin-left: 5px;
+    }
+  }
+}
