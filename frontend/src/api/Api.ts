@@ -45,7 +45,7 @@ export interface FullRecipe {
 }
 
 export namespace Api {
-    const endpoint = "http://127.0.0.1:8000";
+    const endpoint = "https://3ngv4gtvia.execute-api.us-east-2.amazonaws.com/prod";
 
     export namespace Ingredient {
         /**

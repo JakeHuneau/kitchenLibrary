@@ -6,12 +6,6 @@ from sqlalchemy.orm import configure_mappers
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 
-from kitchenLibrary.app.models.kitchen import Kitchen
-from kitchenLibrary.app.models.ingredients import Ingredient, IngredientInfo
-from kitchenLibrary.app.models.recipes import Recipe, RecipeInfo
-from kitchenLibrary.app.models.user import User
-from kitchenLibrary.app.models.recipe_ingredients import RecipeIngredient
-
 configure_mappers()
 
 

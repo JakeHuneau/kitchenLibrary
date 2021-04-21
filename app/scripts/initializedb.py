@@ -1,9 +1,13 @@
-from kitchenLibrary.app.models import Ingredient, RecipeIngredient, Recipe, User, Kitchen
 from kitchenLibrary.app.models import (
     get_engine,
     get_session
 )
+from kitchenLibrary.app.models.ingredients import Ingredient
+from kitchenLibrary.app.models.kitchen import Kitchen
 from kitchenLibrary.app.models.meta import Base
+from kitchenLibrary.app.models.recipe_ingredients import RecipeIngredient
+from kitchenLibrary.app.models.recipes import Recipe
+from kitchenLibrary.app.models.user import User
 
 
 def main():

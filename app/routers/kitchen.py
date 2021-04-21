@@ -3,8 +3,11 @@ from typing import List
 from fastapi import APIRouter
 from sqlalchemy import and_
 
+from kitchenLibrary.app.models.ingredients import Ingredient
+from kitchenLibrary.app.models.kitchen import Kitchen
+from kitchenLibrary.app.models.user import User
 from kitchenLibrary.app.util import Response, decrypt
-from kitchenLibrary.app.models import get_session, Ingredient, User, Kitchen
+from kitchenLibrary.app.models import get_session
 
 router = APIRouter()
 

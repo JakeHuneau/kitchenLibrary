@@ -2,8 +2,10 @@ from typing import Optional
 
 from fastapi import APIRouter
 
+from kitchenLibrary.app.models.kitchen import Kitchen
+from kitchenLibrary.app.models.user import User
 from kitchenLibrary.app.util import Response, encrypt, check_referenced_user_permissions, decrypt
-from kitchenLibrary.app.models import User, get_session, Kitchen
+from kitchenLibrary.app.models import get_session
 
 router = APIRouter()
 

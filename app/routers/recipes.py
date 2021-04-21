@@ -4,10 +4,11 @@ from typing import List
 from fastapi import APIRouter
 from pydantic import BaseModel
 
+from kitchenLibrary.app.models.ingredients import IngredientInfo, Ingredient
+from kitchenLibrary.app.models.recipe_ingredients import RecipeIngredient
+from kitchenLibrary.app.models.recipes import RecipeInfo, Recipe
 from kitchenLibrary.app.util import Response, check_referenced_user_permissions
-from kitchenLibrary.app.models import get_session, Recipe, RecipeIngredient
-from kitchenLibrary.app.models import IngredientInfo, Ingredient
-from kitchenLibrary.app.models import RecipeInfo
+from kitchenLibrary.app.models import get_session
 
 router = APIRouter()
 

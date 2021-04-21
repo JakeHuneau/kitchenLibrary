@@ -1,8 +1,8 @@
-import uvicorn
 from fastapi import FastAPI
+from mangum import Mangum
 from starlette.middleware.cors import CORSMiddleware
 
-from kitchenLibrary.app.routers import users, recipes, kitchen, ingredients
+from kitchenLibrary.app.routers import kitchen, users, recipes, ingredients
 
 app = FastAPI()
 
@@ -23,5 +23,4 @@ app.include_router(recipes.router)
 app.include_router(kitchen.router)
 app.include_router(ingredients.router)
 
-if __name__ == '__main__':
-    uvicorn.run('kitchenLibrary.app.main:app', host='127.0.0.1', port=8000, reload=True)
+handler = Mangum(app=app)

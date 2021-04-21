@@ -1,7 +1,8 @@
 from fastapi import APIRouter
 
+from kitchenLibrary.app.models.ingredients import Ingredient
 from kitchenLibrary.app.util import Response
-from kitchenLibrary.app.models import get_session, Ingredient
+from kitchenLibrary.app.models import get_session
 
 router = APIRouter()
 
