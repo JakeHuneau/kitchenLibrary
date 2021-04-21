@@ -91,7 +91,7 @@ export namespace Api {
          */
         export function addUser(username: string,
                                 password: string,
-                                can_write: boolean = false,
+                                can_write: boolean = true,
                                 can_delete: boolean = false,
                                 can_alter_users: boolean = false): Promise<ApiResponse<null>> {
             return axios.put<ApiResponse<null>>(`${endpoint}/users/${username}`, null, {
