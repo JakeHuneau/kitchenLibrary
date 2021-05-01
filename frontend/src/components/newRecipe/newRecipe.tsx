@@ -29,6 +29,7 @@ export const NewRecipe: React.FunctionComponent<Props> = (props) => {
         }
     ]);
     const [directions, setDirections] = useState("");
+    const [disableSaveButton, setDisableSaveButton] = useState(false);
 
     if (props.userId === undefined) {
         return <div>
@@ -122,13 +123,17 @@ export const NewRecipe: React.FunctionComponent<Props> = (props) => {
                     />
                 </div>
                 <div className={`${COMPONENT_NAME}__buttons`}>
+                    <br/>
                     <Blueprint.Button
+                        disabled={disableSaveButton}
                         onClick={() => {
+                            setDisableSaveButton(true);
                             Api.Recipe.addRecipe({
                                 name: recipeName,
                                 directions: directions,
                                 ingredients: ingredients
                             }, props.userId!).then((result) => {
+                                setDisableSaveButton(false);
                                 if (result.success) {
                                     Toaster.show({
                                         intent: Blueprint.Intent.SUCCESS,

@@ -8,6 +8,7 @@ import {Home} from "./components/home/home";
 import {NewRecipe} from "./components/newRecipe/newRecipe";
 import {NewUser} from "./components/newUser/newUser";
 import {User} from "./components/user/user";
+import  Cookies  from "js-cookie";
 
 interface State {
     userId: string | undefined;
@@ -38,7 +39,7 @@ export default class KitchenLibrary extends React.Component<Props, State> {
     public constructor(props: Props) {
         super(props);
         this.state = {
-            userId: undefined,
+            userId: Cookies.get("userId"),
             userIngredients: [],
             possibleIngredients: []
         }
@@ -66,7 +67,14 @@ export default class KitchenLibrary extends React.Component<Props, State> {
                 <div className={`${COMPONENT_NAME}__header__right`}>
                     <Login
                         userId={this.state.userId}
-                        setUserId={(newUserId) => this.setState({userId: newUserId})}
+                        setUserId={(newUserId) => {
+                            this.setState({userId: newUserId});
+                            if (newUserId) {
+                                Cookies.set("userId", newUserId);
+                            } else {
+                                Cookies.remove("userId")
+                            }
+                        }}
                     />
                 </div>
             </div>);

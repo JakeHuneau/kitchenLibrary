@@ -15,6 +15,7 @@ const COMPONENT_NAME = "NewUser"
 export const NewUser: React.FunctionComponent<Props> = (props) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [disableSaveButton, setDisableSaveButton] = useState(false);
 
     return (
         <div className={COMPONENT_NAME}>
@@ -36,23 +37,27 @@ export const NewUser: React.FunctionComponent<Props> = (props) => {
             </div>
             <br/>
             <br/>
-            <Blueprint.Button onClick={() =>
-                Api.User.addUser(username, password).then((result) => {
-                    if (result.success) {
-                        Toaster.show({
-                            intent: Blueprint.Intent.SUCCESS,
-                            message: `Welcome to the club, ${username}!`,
-                            timeout: 2000
-                        });
-                    } else {
-                        Toaster.show({
-                            intent: Blueprint.Intent.SUCCESS,
-                            message: `Failed to add ${username}`,
-                            timeout: 2000
-                        });
-                        console.log(result.message);
-                    }
-                })}>
+            <Blueprint.Button
+                disabled={disableSaveButton}
+                onClick={() => {
+                    setDisableSaveButton(true);
+                    Api.User.addUser(username, password).then((result) => {
+                        setDisableSaveButton(false);
+                        if (result.success) {
+                            Toaster.show({
+                                intent: Blueprint.Intent.SUCCESS,
+                                message: `Welcome to the club, ${username}!`,
+                                timeout: 2000
+                            });
+                        } else {
+                            Toaster.show({
+                                intent: Blueprint.Intent.SUCCESS,
+                                message: `Failed to add ${username}`,
+                                timeout: 2000
+                            });
+                            console.log(result.message);
+                        }
+                    })}}>
                 Add User
             </Blueprint.Button>
         </div>

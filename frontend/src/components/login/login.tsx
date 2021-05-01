@@ -17,6 +17,7 @@ const COMPONENT_NAME = "Login"
 export const Login: React.FunctionComponent<Props> = (props) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [disableLoginButton, setDisableLoginButton] = useState(false);
     const history = useHistory();
 
     return (
@@ -35,19 +36,23 @@ export const Login: React.FunctionComponent<Props> = (props) => {
                             placeholder={"Password"}
                             type={"password"}
                         />
-                        <Blueprint.Button onClick={() => {
-                            Api.User.signIn(username.toLowerCase(), password).then((result) => {
-                                if (result.success) {
-                                    props.setUserId(result.data);
-                                } else {
-                                    Toaster.show({
-                                        intent: Blueprint.Intent.DANGER,
-                                        message: "Login Failed",
-                                        timeout: 2000
-                                    })
-                                }
-                            })
-                        }}>
+                        <Blueprint.Button
+                            disabled={disableLoginButton}
+                            onClick={() => {
+                                setDisableLoginButton(true);
+                                Api.User.signIn(username.toLowerCase(), password).then((result) => {
+                                    setDisableLoginButton(false);
+                                    if (result.success) {
+                                        props.setUserId(result.data);
+                                    } else {
+                                        Toaster.show({
+                                            intent: Blueprint.Intent.DANGER,
+                                            message: "Login Failed",
+                                            timeout: 2000
+                                        })
+                                    }
+                                })
+                            }}>
                             Log in
                         </Blueprint.Button>
                         <Blueprint.Button onClick={() => history.push("/newUser")}>
